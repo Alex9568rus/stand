@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <!-- <div class="detail_block"> -->
+        <div class="container detail_block">
+            <h1 class="name_cake">{{ cake.name }}</h1>
+            <div class="cake_block">
+                <img class="cake_im" src="{{ cake.image.url }}">
+                <div class="cake_dicription">
+                    {{ cake.description }}
+                    <hr>
+                    Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- <div class="container "> -->
+        <div class="content_block">
+            <div class="block_tags">
+                {% include 'includes/tags.html' %}
+            </div>
+            <div class="block_prod">
+                {% for element in obj_on_display %}
+                    <div class="block_item">
+                        <div>
+                            <a href="{% url 'products:details' element.id %}">
+                                <img class="im_prod" src="{{ element.image.url }}" width="300" height="400">
+                            </a>
+                        </div>
+                        <div>
+                            <h3>
+                                <a class="ref_cake" href="{% url 'products:details' element.id %}">
+                                    <em>{{ element.name }}</em>
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% include 'includes/paginator.html'%}
+    <!-- </div> -->
+{% endblock %}

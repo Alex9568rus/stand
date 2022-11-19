@@ -1,0 +1,31 @@
+{% if page_obj.has_other_pages %}
+    <div class="pagination_item">
+        {% if page_obj.has_previous %}
+            <a class="link_pag" href="?page=1">
+                Первая
+            </a>
+            <a class="link_pag" href="?page={{ page_obj.previous_page_number }}">
+                &laquo;
+            </a>
+        {% endif %}
+        {% for page in paginator.page_range %}
+            {% if page_obj.number == page %}
+                <a class="link_pag_active" href="?page={{ page }}">
+                    {{ page }}
+                </a>
+            {% else %}
+                <a class="link_pag" href="?page={{ page }}">
+                    {{ page }}
+                </a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="link_pag" href="?page={{ page_obj.next_page_number }}">
+                &raquo;
+            </a>
+            <a class="link_pag" href="?page={{ page_obj.paginator.num_pages }}">
+                Последняя
+            </a>
+        {% endif %}
+    </div>
+{% endif %}

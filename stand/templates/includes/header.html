@@ -1,0 +1,13 @@
+{% load static %}
+<div class="block_nav">
+  <header class="d-flex flex-wrap align-items-center justify-content-center py-3">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        {% with request.resolver_match.view_name as view_name%}
+          <li><a href="{% url 'products:product' %}" class="nav-link px-2 link-dark {% if view_name == 'products:product' %}link_active text-white{% endif %}">Ассортимент</a></li> 
+          <li><a href="{% url 'products:works' %}" class="nav-link px-2 link-dark {% if view_name == 'products:works' %}link_active text-white{% endif %}">Фотогалерея</a></li>
+          <li><a href="{% url 'products:contacts' %}" class="nav-link px-2 link-dark {% if view_name == 'products:contacts' %}link_active text-white{% endif %}">Контакты и доставка</a></li>
+          <li><a href="{% url 'products:about' %}" class="nav-link px-2 link-dark {% if view_name == 'products:about' %}link_active text-white{% endif %}">Обо мне</a></li>
+        {% endwith %}
+      </ul>
+  </header>
+</div>
