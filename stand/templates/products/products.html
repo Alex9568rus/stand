@@ -3,7 +3,19 @@
     <!-- <div class="container "> -->
         <div class="content_block">
             <div class="block_tags">
-                {% include 'includes/tags.html' %}
+                <ul class="tags">
+                    <li class="category_block">Категории:</li>
+                    <li><hr></li>
+                    <li>
+                        <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                    </li>
+                    {% for tag in tags %}
+                        <li><hr></li>
+                        <li>
+                            <a class="ref_tag" href="/tags/{{ tag.slug }}/"><em>{{ tag.name }}</em></a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="block_prod">
                 {% for element in obj_on_display %}

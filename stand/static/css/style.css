@@ -65,8 +65,6 @@
 .nav-link:hover {
     text-decoration: underline;
     color: #fff;
-    /* background-color: rgb(179, 177, 177);
-    border-radius: 5px; */
     align-items: center;
     transition: 0.1s linear;
 }
@@ -250,4 +248,23 @@
 /* Footer */
 .bloc_footer {
     height: 10vh;
+}
+
+
+/* Contacts and delivery */
+.cd_content {
+    width: 90%;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.contacts {
+    display: block;
+    text-align: left;
+    width: 50%;
+    margin: 0 auto 1%;
+    font-size: 1.2rem;
 }
