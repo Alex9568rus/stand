@@ -36,6 +36,7 @@ class ProductDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = context['cake']
+        context['tag_names'] = ['Бисквитные торты', 'Бенто-торты']
         return context
 
 

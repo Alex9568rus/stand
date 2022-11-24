@@ -47,8 +47,17 @@ class Product(models.Model):
     description = models.TextField(
         verbose_name='Описание изделия',
     )
+    limits = models.TextField(
+        verbose_name='Дополнение',
+        blank=True
+    )
     price = models.PositiveIntegerField(
         verbose_name='Цена'
+    )
+    extra_price = models.PositiveIntegerField(
+        verbose_name='Дополнитьельная цена',
+        blank=True,
+        default=0
     )
     measurement_unit = models.CharField(
         max_length=100,

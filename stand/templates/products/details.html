@@ -3,17 +3,27 @@
     {{ title }}
 {% endblock %}
 {% block content %}
-    <!-- <div class="detail_block"> -->
-        <div class="container detail_block">
-            <h1 class="name_cake">{{ cake.name }}</h1>
-            <div class="cake_block">
-                <img class="cake_im" src="{{ cake.image.url }}">
-                <div class="cake_dicription">
-                    {{ cake.description }}
-                    <hr>
+    <div class="container detail_block">
+        <h1 class="name_cake">{{ cake.name }}</h1>
+        <div class="cake_block">
+            <img class="cake_im" src="{{ cake.image.url }}">
+            <div class="cake_dicription">
+                {{ cake.description }}
+                <hr>
+                {% if cake.extra_price %}
+                    Размер S(~400г): Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}<br>
+                    Размер M(~700г): Цена: {{ cake.extra_price }} руб/{{ cake.measurement_unit }}<br>
+                {% else %}
                     Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}
-                </div>
+                {% endif %}
+                <hr>
+                {% if cake.limits %}
+                    <p style="font-size: 1.2rem;">
+                        {{ cake.limits }}
+                    </p>
+                {% endif %}
+                
             </div>
         </div>
-    <!-- </div> -->
+    </div>
 {% endblock %}

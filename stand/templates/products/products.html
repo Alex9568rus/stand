@@ -1,42 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-    <!-- <div class="container "> -->
-        <div class="content_block">
-            <div class="block_tags">
-                <ul class="tags">
-                    <li class="category_block">Категории:</li>
+    <div class="content_block">
+        <div class="block_tags">
+            <ul class="tags">
+                <li class="category_block">Категории:</li>
+                <li><hr></li>
+                <li>
+                    <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                </li>
+                {% for tag in tags %}
                     <li><hr></li>
                     <li>
-                        <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                        <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
                     </li>
-                    {% for tag in tags %}
-                        <li><hr></li>
-                        <li>
-                            <a class="ref_tag" href="/tags/{{ tag.slug }}/"><em>{{ tag.name }}</em></a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="block_prod">
-                {% for element in obj_on_display %}
-                    <div class="block_item">
-                        <div>
-                            <a href="{% url 'products:details' element.id %}">
-                                <img class="im_prod" src="{{ element.image.url }}" width="300" height="400">
-                            </a>
-                        </div>
-                        <div>
-                            <h3>
-                                <a class="ref_cake" href="{% url 'products:details' element.id %}">
-                                    <em>{{ element.name }}</em>
-                                </a>
-                            </h3>
-                        </div>
-                    </div>
                 {% endfor %}
-            </div>
+            </ul>
         </div>
-
+        <div class="block_prod">
+            {% for element in obj_on_display %}
+                <div class="block_item">
+                    <div>
+                        <a href="{% url 'products:details' element.id %}">
+                            <img class="im_prod" src="{{ element.image.url }}">
+                        </a>
+                    </div>
+                    <div>
+                        <h3>
+                            <a class="ref_cake" href="{% url 'products:details' element.id %}">
+                                <em>{{ element.name }}</em>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     {% include 'includes/paginator.html'%}
-    <!-- </div> -->
 {% endblock %}
