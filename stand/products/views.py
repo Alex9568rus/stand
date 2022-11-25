@@ -41,20 +41,28 @@ class ProductDetail(DetailView):
 
 
 class ProductByTag(ProductList):
-
+    """Распределение продукцие по тегам."""
     def get_queryset(self):
         return Product.objects.filter(tag__slug=self.kwargs['tag_slug'])
 
 
-class MyWorks(ProductList):
+class MyWorks(ListView):
     """Класс представления конечных продуктов (готовых тортов, рулетов и т.д).
     """
     model = Works
     template_name = 'products/my_works.html'
     extra_context = {'title': 'Мои работы'}
+    context_object_name = 'obj_on_display'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Мои работы'
+        context['tags'] = Tag.objects.all()
+        return context
 
 
-class WorksByTags(ProductByTag):
+class WorksByTags(MyWorks):
+    """Распределение моих работ по тегам."""
 
     def get_queryset(self):
         return Works.objects.filter(tag__slug=self.kwargs['tag_slug'])
