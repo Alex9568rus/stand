@@ -1,15 +1,16 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from .models import Product, Tag, Works
 
 
-def index(request):
-    """Функция для отображения начальной(главной) страницы."""
-    title = 'siberia Cake | Торты на заказ'
+class Index(TemplateView):
+    """Класс для отображения начальной(главной) страницы."""
     template = 'products/index.html'
-    context = {'title': title}
-    return render(request, template, context)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Siberia Cake | Торты на заказ'
+        return context
 
 
 class ProductList(ListView):
@@ -68,17 +69,15 @@ class WorksByTags(MyWorks):
         return Works.objects.filter(tag__slug=self.kwargs['tag_slug'])
 
 
-def contacts_and_delivery(request):
-    """Функция для отображения контактов и условий доставки."""
+class ContactsAndDelivery(TemplateView):
+    """Класс для отображения контактов и условий доставки."""
     title = 'Контакты и доставка'
     template = 'products/contacts.html'
-    context = {'title': title}
-    return render(request, template, context)
+    extra_context = {'title': title}
 
 
-def about(request):
-    """Функция для отображения информации о себе."""
+class About(TemplateView):
+    """Класс для отображения информации о себе."""
     title = 'Обо мне'
     template = 'products/about.html'
-    context = {'title': title}
-    return render(request, template, context)
+    extra_context = {'title': title}
