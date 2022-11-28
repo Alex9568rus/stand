@@ -5,7 +5,7 @@ from .models import Product, Tag, Works
 
 class Index(TemplateView):
     """Класс для отображения начальной(главной) страницы."""
-    template = 'products/index.html'
+    template_name = 'products/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -72,12 +72,12 @@ class WorksByTags(MyWorks):
 class ContactsAndDelivery(TemplateView):
     """Класс для отображения контактов и условий доставки."""
     title = 'Контакты и доставка'
-    template = 'products/contacts.html'
+    template_name = 'products/contacts.html'
     extra_context = {'title': title}
 
 
 class About(TemplateView):
     """Класс для отображения информации о себе."""
     title = 'Обо мне'
-    template = 'products/about.html'
+    template_name = 'products/about.html'
     extra_context = {'title': title}
