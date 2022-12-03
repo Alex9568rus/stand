@@ -3,27 +3,40 @@
     {{ title }}
 {% endblock %}
 {% block content %}
-    <div class="container detail_block">
-        <h1 class="name_cake">{{ cake.name }}</h1>
-        <div class="cake_block">
-            <img class="cake_im" src="{{ cake.image.url }}">
-            <div class="cake_dicription">
-                {{ cake.description }}
-                <hr>
-                {% if cake.extra_price %}
-                    Размер S(~400г): Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}<br>
-                    Размер M(~700г): Цена: {{ cake.extra_price }} руб/{{ cake.measurement_unit }}<br>
-                {% else %}
-                    Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}
-                {% endif %}
-                <hr>
-                {% if cake.limits %}
-                    <p style="font-size: 1.2rem;">
-                        {{ cake.limits }}
-                    </p>
-                {% endif %}
-                
+    <div class="container marketing">
+        <hr class="featurette-divider">
+        <div class="detail_block">
+            <div class="row featurette">
+                <div class="col-md-5 order-md-1">
+                    <div style="display: flex; height: 100%; align-content: cenetr; justify-content: center;">
+                        <img class="cake_im" src="{{ cake.image.url }}">
+                    </div>
+                </div>
+                <div class="col-md-7 order-md-2 cake_dicription">
+                    <h2 class="featurette-Заголовок">{{ cake.name }}</h2>
+                    <p class="lead">{{ cake.description }}</p>
+                    <hr>
+                    {% if cake.extra_price %}
+                        <p class="lead">
+                            Размер S(~400г): Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}<br>
+                            Размер M(~700г): Цена: {{ cake.extra_price }} руб/{{ cake.measurement_unit }}<br>
+                        </p>
+                    {% else %}
+                        <p class="lead">
+                            Цена: {{ cake.price }} руб/{{ cake.measurement_unit }}
+                        </p>
+                    {% endif %}
+                    <hr>
+                    {% if cake.limits %}
+                        <p class="card-text">
+                            <small class="text-muted">
+                            {{ cake.limits }}
+                            </small>
+                        </p>
+                    {% endif %}
+                </div>
             </div>
         </div>
+        <hr class="featurette-divider">    
     </div>
 {% endblock %}

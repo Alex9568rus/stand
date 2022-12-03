@@ -1,39 +1,70 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="content_block">
-        <div class="block_tags">
-            <ul class="tags">
-                <li class="category_block">Категории:</li>
-                <li><hr></li>
-                <li>
-                    <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
-                </li>
-                {% for tag in tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="p-4">
+                <h4 class="font-italic">Категории:</h4>
+                <ol class="list-unstyled mb-0">
                     <li><hr></li>
                     <li>
-                        <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                        <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
                     </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="block_prod">
-            {% for element in obj_on_display %}
-                <div class="block_item">
-                    <div>
-                        <a href="{% url 'products:details' element.id %}">
-                            <img class="im_prod" src="{{ element.image.url }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h3>
-                            <a class="ref_cake" href="{% url 'products:details' element.id %}">
-                                <em>{{ element.name }}</em>
-                            </a>
-                        </h3>
+                    {% for tag in tags %}
+                        <li><hr></li>
+                        <li>
+                            <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="cat_list">
+                <div class="dropdown">
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn cat_button dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Категории:
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                        </li>
+                            {% for tag in tags %}
+                                <li><hr></li>
+                                <li>
+                                    <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
+        </div>
+        <div class='col-md-8'>
+            <div class="album py-5">
+                <div >
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {% for element in obj_on_display %}
+                            <div class="col">
+                                <div class="card shadow-sm text-center">
+                                    <a href="{% url 'products:details' element.id %}">
+                                        <img class="im_prod" src="{{ element.image.url }}">
+                                    </a>
+                                    <div class="card-body">
+                                        <a class="ref_cake" href="{% url 'products:details' element.id %}">
+                                            <em>{{ element.name }}</em>
+                                        </a>
+                                        <div class="d-flex">
+                                            <small class="text-muted">Цена: {{ element.price }} руб/{{ element.measurement_unit }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% include 'includes/paginator.html'%}
+                </div>
+            </div>
         </div>
     </div>
-    {% include 'includes/paginator.html'%}
+</div>
 {% endblock %}
