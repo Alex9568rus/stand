@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, TemplateView
 
-from .models import Product, Tag, Works
+from .models import Product, Works
+from .utils import ContextDataMixin
 
 
 class Index(TemplateView):
@@ -13,7 +14,7 @@ class Index(TemplateView):
         return context
 
 
-class ProductList(ListView):
+class ProductList(ContextDataMixin, ListView):
     """Класс представления всего ассортимента."""
     model = Product
     template_name = 'products/products.html'
@@ -22,9 +23,13 @@ class ProductList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Продукция'
-        context['tags'] = Tag.objects.all()
-        return context
+        add_data = self.get_user_context(title='Продукция')
+        return dict(list(context.items()) + list(add_data.items()))
+
+    def get_queryset(self):
+        return Product.objects.select_related('tag')  # .values(
+        #     'id', 'name', 'price', 'image', 'measurement_unit'
+        # )
 
 
 class ProductDetail(DetailView):
@@ -37,29 +42,30 @@ class ProductDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = context['cake']
-        context['tag_names'] = ['Бисквитные торты', 'Бенто-торты']
         return context
 
 
 class ProductByTag(ProductList):
     """Распределение продукцие по тегам."""
+
     def get_queryset(self):
         return Product.objects.filter(tag__slug=self.kwargs['tag_slug'])
 
 
-class MyWorks(ListView):
+class MyWorks(ContextDataMixin, ListView):
     """Класс представления конечных продуктов (готовых тортов, рулетов и т.д).
     """
     model = Works
     template_name = 'products/my_works.html'
-    extra_context = {'title': 'Мои работы'}
     context_object_name = 'obj_on_display'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Мои работы'
-        context['tags'] = Tag.objects.all()
-        return context
+        add_data = self.get_user_context(title='Мои работы')
+        return dict(list(context.items()) + list(add_data.items()))
+
+    def get_queryset(self):
+        return Works.objects.select_related('tag')
 
 
 class WorksByTags(MyWorks):

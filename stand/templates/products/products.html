@@ -4,16 +4,16 @@
     <div class="row">
         <div class="col-md-4">
             <div class="p-4">
-                <h4 class="font-italic">Категории:</h4>
+                <h4>Категории:</h4>
                 <ol class="list-unstyled mb-0">
                     <li><hr></li>
                     <li>
-                        <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                        <a class="ref_tag" href="{% url 'products:product' %}">Весь ассортимент</a>
                     </li>
                     {% for tag in tags %}
                         <li><hr></li>
                         <li>
-                            <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                            <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}">{{ tag.name }}</a>
                         </li>
                     {% endfor %}
                 </ol>
@@ -26,12 +26,12 @@
                         </button>
                         <ul class="dropdown-menu">
                           <li>
-                            <a class="ref_tag" href="{% url 'products:product' %}"><em>Весь ассортимент</em></a>
+                            <a class="ref_tag" href="{% url 'products:product' %}">Весь ассортимент</a>
                         </li>
                             {% for tag in tags %}
                                 <li><hr></li>
                                 <li>
-                                    <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                                    <a class="ref_tag" href="{% url 'products:prod_by_tag' tag.slug %}">{{ tag.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -51,7 +51,7 @@
                                     </a>
                                     <div class="card-body">
                                         <a class="ref_cake" href="{% url 'products:details' element.id %}">
-                                            <em>{{ element.name }}</em>
+                                            <h4>{{ element.name }}</h4>
                                         </a>
                                         <div class="d-flex">
                                             <small class="text-muted">Цена: {{ element.price }} руб/{{ element.measurement_unit }}</small>

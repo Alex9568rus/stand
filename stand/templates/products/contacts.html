@@ -1,65 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container cd_content">
-        <div>
-            <h3>Контакты</h3>
-            <hr>
-            <p>
-                Если у Вас возникли вопросы, Вы можете задать их:<br>
-                <ul class="contacts">
-                    <li>
-                        <em>
-                            в группе ВК <a href="https://vk.com/siberia_cake" target="_blank">Siberia Cake</a>
-                        </em>
-                    </li>
-                    <li>
-                        <em>
-                            в мессенджерах <a href="https://t.me/anastasia_sib" target="_blank">Telegram</a>
-                            или <a href="https://wa.me/79163781454" target="_blank">WhatsApp</a>
-                        </em>
-                    </li>
-                    <li>
-                        <em>
-                            в директ <a href="https://www.instagram.com/siberia_cake" target="_blank" title="* - Meta Platforms Inc. признана экстремистской организацией и запрещена на территории РФ">Instagram*</a>
-                        </em>
-                    </li>
-                    <li>
-                        <em>
-                            позвонив по телефону: +79163781454
-                        </em>
-                    </li>
-                </ul>
-                Пожалуйста, пишите или звоните, и я с радостью отвечу<br> на все Ваши вопросы, расскажу и подскажу.
-            </р>
-            <hr>
-            <hr>
-        </div>
-        <div>
-            <h3>Доставка</h3>
-            <hr>
-            <p>
-                На данный момент есть несколько способов получить заказ:
-                <ul class="contacts">
-                    <li>
-                        <em>Самовывоз: Я нахожусь в Щелковском районе, Оболдино</em>
-                    </li>
-                    <li>
-                        <em>Доставлю лично, если длина маршрута не превысит 40 км</em>
-                        Доставка в Щелково и Королёв БЕСПЛАТНАЯ,
-                        в остальных случаях рассчитывается в зависимости от расстояния.<br>
-                        Для расчета стоимости укажите станцию метро или населенный пункт.
-                    </li>
-                </ul>
-                Если расстояние до Вас больше 40 км, а сладенького хочется,<br>есть альтернативные способы:
-                <ul class="contacts">
-                    <li>
-                        <em>Могу встретиться с Вами около м.Ботанической сад или м.Бульвар Рокоссовского (500 руб.)</em>
-                    </li>
-                    <li>
-                        <em>Можно воспользоваться курьерской доставкой, например, от Яндекса</em>
-                    </li>
-                </ul>
-            </p>
+    <div class="container">
+        <div class="cd_content">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Контакты</h3>
+                        <p class="card-text mb-auto">
+                            Если у Вас возникли вопросы, Вы можете задать их:<br>
+                            <ul>
+                                <li>
+                                        в группе ВК <a class="link-primary" style="text-decoration: none;" href="https://vk.com/siberia_cake" target="_blank">Siberia Cake</a>
+                                </li>
+                                <li>
+                                        в мессенджерах <a class="link-info" style="text-decoration: none;" href="https://t.me/anastasia_sib" target="_blank">Telegram</a>
+                                        или <a class="link-success" style="text-decoration: none;" href="https://wa.me/79163781454" target="_blank">WhatsApp</a>
+                                </li>
+                                <li>
+                                        в директ <a class="rainbow_a" href="https://www.instagram.com/siberia_cake" target="_blank" title="* - Meta Platforms Inc. признана экстремистской организацией и запрещена на территории РФ">Instagram*</a>
+                                </li>
+                            </ul>
+                            Пожалуйста, пишите или звоните, и я с радостью отвечу на все Ваши вопросы, расскажу и подскажу.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 style="text-align: center;">Доставка</h3>
+                        <hr>
+                        <p class="mb-auto">
+                            На данный момент есть несколько способов получить заказ:
+                        <ul>
+                            <li>
+                                Самовывоз: Я нахожусь в Щелковском районе, д.Оболдино
+                            </li>
+                            <li>
+                                Доставлю лично, если длина маршрута не превысит 40 км<br>
+                                Доставка в Щелково и Королёв БЕСПЛАТНАЯ,
+                                в остальных случаях рассчитывается в зависимости от расстояния.
+                                Для расчета стоимости укажите станцию метро или населенный пункт.
+                            </li>
+                        </ul>
+                        Если расстояние до Вас больше 40 км, а сладенького хочется, есть альтернативные способы:
+                        <ul>
+                            <li>
+                                Могу встретиться с Вами около м.Ботанической сад или м.Бульвар Рокоссовского (500 руб.)
+                            </li>
+                            <li>
+                                Можно воспользоваться курьерской доставкой, например, от Яндекса
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

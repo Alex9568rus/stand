@@ -4,16 +4,16 @@
     <div class="row">
         <div class="col-md-4">
             <div class="p-4">
-                <h4 class="font-italic">Категории:</h4>
+                <h4>Категории:</h4>
                 <ol class="list-unstyled mb-0">
                     <li><hr></li>
                     <li>
-                        <a class="ref_tag" href="{% url 'products:works' %}"><em>Весь ассортимент</em></a>
+                        <a class="ref_tag" href="{% url 'products:works' %}">Весь ассортимент</a>
                     </li>
                     {% for tag in tags %}
                         <li><hr></li>
                         <li>
-                            <a class="ref_tag" href="{% url 'products:work_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                            <a class="ref_tag" href="{% url 'products:work_by_tag' tag.slug %}">{{ tag.name }}</a>
                         </li>
                     {% endfor %}
                 </ol>
@@ -26,12 +26,12 @@
                         </button>
                         <ul class="dropdown-menu">
                           <li>
-                            <a class="ref_tag" href="{% url 'products:works' %}"><em>Весь ассортимент</em></a>
+                            <a class="ref_tag" href="{% url 'products:works' %}">Весь ассортимент</a>
                         </li>
                             {% for tag in tags %}
                                 <li><hr></li>
                                 <li>
-                                    <a class="ref_tag" href="{% url 'products:work_by_tag' tag.slug %}"><em>{{ tag.name }}</em></a>
+                                    <a class="ref_tag" href="{% url 'products:work_by_tag' tag.slug %}">{{ tag.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -45,7 +45,19 @@
                     {% for element in obj_on_display %}
                         <div class="col">
                             <div class="card shadow-sm text-center">
-                                <img src="{{ element.image.url }}">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" style="border: none; background: none; outline: none;">
+                                    <img class="im_prod" src="{{ element.image.url }}">
+                                </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered col-md-4">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <img src="{{ element.image.url }}">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
