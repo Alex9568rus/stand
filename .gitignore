@@ -131,6 +131,7 @@ dmypy.json
 # vscode
 vscode/
 
-# media
+# own folders
 media/
 static/
+site_cache/
