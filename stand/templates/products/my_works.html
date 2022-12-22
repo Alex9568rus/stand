@@ -45,7 +45,8 @@
                     {% for element in obj_on_display %}
                         <div class="col">
                             <div class="card shadow-sm text-center">
-                                <button type="button" data-toggle="modal" data-target="#exampleModal" style="border: none; background: none; outline: none;">
+                                <img src="{{ element.image.url }}">
+                                <!-- <button type="button" data-toggle="modal" data-target="#exampleModal" style="border: none; background: none; outline: none;">
                                     <img class="im_prod" src="{{ element.image.url }}">
                                 </button>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +58,7 @@
                                             <img src="{{ element.image.url }}">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     {% endfor %}

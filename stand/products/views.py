@@ -58,6 +58,7 @@ class MyWorks(ContextDataMixin, ListView):
     model = Works
     template_name = 'products/my_works.html'
     context_object_name = 'obj_on_display'
+    paginate_by = 9
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
