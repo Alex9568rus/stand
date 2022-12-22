@@ -23,13 +23,11 @@ class ProductList(ContextDataMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        add_data = self.get_user_context(title='Продукция')
+        add_data = self.get_user_context(title='Siberia Cake | Продукция')
         return dict(list(context.items()) + list(add_data.items()))
 
     def get_queryset(self):
-        return Product.objects.select_related('tag')  # .values(
-        #     'id', 'name', 'price', 'image', 'measurement_unit'
-        # )
+        return Product.objects.select_related('tag')
 
 
 class ProductDetail(DetailView):
@@ -41,7 +39,7 @@ class ProductDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = context['cake']
+        context['title'] = 'Siberia Cake | ' + str(context['cake'])
         return context
 
 
@@ -62,7 +60,7 @@ class MyWorks(ContextDataMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        add_data = self.get_user_context(title='Мои работы')
+        add_data = self.get_user_context(title='Siberia Cake | Мои работы')
         return dict(list(context.items()) + list(add_data.items()))
 
     def get_queryset(self):
@@ -78,13 +76,13 @@ class WorksByTags(MyWorks):
 
 class ContactsAndDelivery(TemplateView):
     """Класс для отображения контактов и условий доставки."""
-    title = 'Контакты и доставка'
+    title = 'Siberia Cake | Контакты и доставка'
     template_name = 'products/contacts.html'
     extra_context = {'title': title}
 
 
 class About(TemplateView):
     """Класс для отображения информации о себе."""
-    title = 'Обо мне'
+    title = 'Siberia Cake | Обо мне'
     template_name = 'products/about.html'
     extra_context = {'title': title}
