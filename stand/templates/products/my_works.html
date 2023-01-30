@@ -44,21 +44,8 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     {% for element in obj_on_display %}
                         <div class="col">
-                            <div class="card shadow-sm text-center">
-                                <img src="{{ element.image.url }}">
-                                <!-- <button type="button" data-toggle="modal" data-target="#exampleModal" style="border: none; background: none; outline: none;">
-                                    <img class="im_prod" src="{{ element.image.url }}">
-                                </button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered col-md-4">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <img src="{{ element.image.url }}">
-                                        </div>
-                                    </div>
-                                </div> -->
+                            <div class="card shadow-sm text-center" style="align-items: center; border: none;">
+                                <img class="work_img" src="{{ element.image.url }}">
                             </div>
                         </div>
                     {% endfor %}

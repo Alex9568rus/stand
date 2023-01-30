@@ -23,7 +23,7 @@ class ProductList(ContextDataMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        add_data = self.get_user_context(title='Siberia Cake | Продукция')
+        add_data = self.get_user_context(title='Siberia Cake | Ассортимент')
         return dict(list(context.items()) + list(add_data.items()))
 
     def get_queryset(self):
